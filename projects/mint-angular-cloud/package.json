@@ -1,12 +1,22 @@
 {
-  "name": "@mint/mint-angular-cloud",
-  "version": "0.0.1",
+  "name": "@miiint/mint-angular-cloud",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^19.1.0",
     "@angular/core": "^19.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "keywords": ["angular", "word-cloud", "component", "visualization"],
+  "author": "miiint",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peppermint25/mint-angular-cloud"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "sideEffects": false
 }
