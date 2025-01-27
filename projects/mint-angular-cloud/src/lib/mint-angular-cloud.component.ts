@@ -116,12 +116,23 @@ export class MintAngularCloudComponent implements OnInit {
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
+    console.log('Component initialized');
     this.updateContainerDimensions();
     window.addEventListener('resize', () => this.updateContainerDimensions());
+  }
+  
+  ngAfterViewInit() {
+    console.log('View initialized');
+    this.updateContainerDimensions();
   }
 
   private updateContainerDimensions() {
     const container = this.elementRef.nativeElement.querySelector('.word-cloud-container');
+    console.log('Container dimensions:', {
+      width: container.offsetWidth,
+      height: container.offsetHeight,
+      element: container
+    });
     this.containerWidth.set(container.offsetWidth);
     this.containerHeight.set(container.offsetHeight);
     this.updateCloud();

@@ -8,23 +8,8 @@ import { MintAngularCloudComponent, WordItem } from 'mint-angular-cloud';
   selector: 'app-root',
   standalone: true,
   imports: [MintAngularCloudComponent],
-  template: `
-    <div class="word-cloud-container">
-      <mint-word-cloud 
-        [words]="words"
-        theme="green"
-        emphasis="high">
-      </mint-word-cloud>
-    </div>
-  `,
-  styles: [`
-    .word-cloud-container {
-      height: 600px;
-      // width: 100%;
-      width: 900px;
-      border: 1px solid #ccc;
-    }
-  `]
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   words: WordItem[] = [

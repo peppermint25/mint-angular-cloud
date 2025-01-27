@@ -5,7 +5,7 @@ A responsive and dynamic word cloud component for Angular 17+. This component au
 ## Installation
 
 ```bash
-npm install mint-angular-cloud
+npm i @miiint/mint-angular-cloud
 ```
 
 ## Usage
