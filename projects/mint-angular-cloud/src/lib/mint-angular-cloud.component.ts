@@ -116,26 +116,32 @@ export class MintAngularCloudComponent implements OnInit {
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
-    console.log('Component initialized');
     this.updateContainerDimensions();
     window.addEventListener('resize', () => this.updateContainerDimensions());
   }
-  
+
   ngAfterViewInit() {
-    console.log('View initialized');
-    this.updateContainerDimensions();
+    // Force a recalculation after view is initialized
+    setTimeout(() => {
+      this.updateContainerDimensions();
+      this.updateCloud();
+    }, 0);
   }
 
   private updateContainerDimensions() {
     const container = this.elementRef.nativeElement.querySelector('.word-cloud-container');
-    console.log('Container dimensions:', {
-      width: container.offsetWidth,
-      height: container.offsetHeight,
-      element: container
-    });
-    this.containerWidth.set(container.offsetWidth);
-    this.containerHeight.set(container.offsetHeight);
-    this.updateCloud();
+    if (container) {
+      const height = container.offsetHeight;
+      // Only update if we have a valid height
+      if (height > 0) {
+        this.containerWidth.set(container.offsetWidth);
+        this.containerHeight.set(height);
+        this.updateCloud();
+      } else {
+        // If height is still 0, try again after a short delay
+        setTimeout(() => this.updateContainerDimensions(), 100);
+      }
+    }
   }
 
   private updateCloud() {
